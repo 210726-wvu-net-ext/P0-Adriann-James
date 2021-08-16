@@ -1,24 +1,28 @@
-CREATE TABLE FurType (
+DROP TABLE Species;
+DROP TABLE Animals;
+DROP TABLE Likes;
+
+CREATE TABLE Likes (
     Id int IDENTITY (1,1) PRIMARY KEY,
     Name VARCHAR (100) not NULL
 );
 
-CREATE TABLE DogType (
+CREATE TABLE Species (
     Id int IDENTITY (1,1) PRIMARY KEY,
     Name VARCHAR (100) not NULL
 ); 
 
 
-Create TABLE Dogs (
+Create TABLE Cats (
     Id int IDENTITY (1,1) PRIMARY KEY,
     Name VARCHAR (100) not NULL
     Weight DECIMAL,
     DoB DATETIME
     FurType int FOREIGN KEY REFERENCES FurType (Id) not NULL,
-    DogType int FOREIGN KEY REFERENCES DogType (Id) not NULL
+    DogType int FOREIGN KEY REFERENCES CatType (Id) not NULL
 );
 
-ALTER TABLE Dogs
+ALTER TABLE Cats
 ALTER COLUMN DoB Date;
 
 INSERT INTO FurType (Name) VALUES ('Short');
@@ -28,10 +32,10 @@ INSERT INTO FurType (Name) VALUES ('No Hair');
 
 SELECT * FROM FurType;
 
-INSERT INTO DogType (Name) VALUES ('');
-INSERT INTO DogType (Name) VALUES ('');
-INSERT INTO DogType (Name) VALUES ('');
+INSERT INTO CatType (Name) VALUES ('');
+INSERT INTO CatType (Name) VALUES ('');
+INSERT INTO CatType (Name) VALUES ('');
 
-SELECT * FROM DogType;
+SELECT * FROM CatType;
 
-INSERT INTO Dog (Name, Weight, DoB, FurType, DogType) VALUES ('', '', '', '',);
+INSERT INTO Cat (Name, Weight, DoB, FurType, CatType) VALUES ('Fluffy','85', '2015/02/25','Long','Collie');
